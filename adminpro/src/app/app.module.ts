@@ -11,6 +11,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProgressComponent } from './pages/progress/progress.component';
+import { PagesComponent } from './pages/pages.component';
 // import { Grafica1Component } from './pages/grafica1/grafica1.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ProgressComponent } from './pages/progress/progress.component';
     SidebarComponent,
     HeaderComponent,
     ProgressComponent,
+    PagesComponent,
     // Grafica1Component
   ],
   imports: [

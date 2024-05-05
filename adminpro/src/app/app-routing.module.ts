@@ -6,13 +6,23 @@ import { RegisterComponent } from './auth/register/register.component';
 import path from 'path';
 import { ProgressComponent } from './pages/progress/progress.component';
 import { NotpagefoundComponent } from './pages/notpagefound/notpagefound.component';
+import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
-  {path:'dashboard',component:DashboardComponent},
+  {
+      path:'',
+      component:PagesComponent,
+      children:[
+        {path:'dashboard',component:DashboardComponent},
+        {path:'progress',component:ProgressComponent},
+        {path:'',redirectTo:'/dashboard',pathMatch:'full'},//si va vacio redirecciona
+      ]
+  },
+  
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  {path:'progress',component:ProgressComponent},
-  {path:'',redirectTo:'/dashboard',pathMatch:'full'},//si va vacio redirecciona
+  
+  
   {path:'**',component:NotpagefoundComponent}//si no la encuentra 
  
 
