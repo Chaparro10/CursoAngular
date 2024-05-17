@@ -1,0 +1,15 @@
+
+
+ng g c components/incrementador --->Creacion de un componente
+ng g m components/components --flat -->Creacion de un Modulo
+
+Desde Angular v17, por defecto los proyectos trabajan sin módulos (module-less)
+Pero para trabajar de forma tradicional como lo vieron en el curso:
+
+
+ng new <nombre de la aplicación> --standalone false
+
+
+****Librerias que usaremos***
+npm install --save sweetalert2 -->Para manejar las notificaciones
+npm install --save ng2-charts -->Para los graficos

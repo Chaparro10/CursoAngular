@@ -1,1 +1,53 @@
-<p>progress works!</p>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">progress works!</h4>
+                <div class="progress m-t-20">
+                    <div class="progress-bar bg-primary progress-bar-striped active"
+                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 10px;"
+                      [style.width]="getProgreso1()"></div>
+                    
+                </div>
+                <!--Barra 2-->
+                <div class="progress m-t-20">
+                    <div class="progress-bar  progress-bar-striped active"
+                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 10px;"
+                      [style.width]="getProgreso2()"></div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+
+            <div class="card-body">
+                <app-incrementador (valorSalida)="progreso1=$event" [progreso]="10"></app-incrementador> <!--Pasando valor de la component padre a la hija -->
+            </div>
+
+        </div>
+       
+    </div>
+
+    <!--Input Barra 2-->
+    <div class="col-6">
+        <div class="card">
+
+            <div class="card-body">
+                <app-incrementador 
+                (valorSalida)="progreso2=$event"
+                 [progreso]="5"
+                  btnClass='btn btn-info'></app-incrementador> <!--Pasando valor de la component padre a la hija -->
+            </div>
+
+        </div>
+       
+    </div>
+</div>
