@@ -4,6 +4,7 @@ import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { ProgressComponent } from "./progress/progress.component";
 import { GraficaComponent } from "./grafica/grafica.component";
+import { PromesasComponent } from "./promesas/promesas.component";
 
 const routes: Routes=[
     {
@@ -12,8 +13,8 @@ const routes: Routes=[
         children:[//Hijas
           {path:'',component:DashboardComponent},
           {path:'progress',component:ProgressComponent},
-          {path:'grafica',component:GraficaComponent}
-         
+          {path:'grafica',component:GraficaComponent},
+          {path:'promesas',component:PromesasComponent}
         ]
     },
 ];
