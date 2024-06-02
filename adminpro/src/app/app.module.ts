@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+
 import Swal from 'sweetalert2'; //Se importa en el module general por sera usado en todos los componentes
 
 //MODULOS
@@ -25,7 +27,8 @@ import { NotpagefoundComponent } from './pages/notpagefound/notpagefound.compone
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    AuthModule
+    AuthModule,
+    RouterModule
   ],
   providers: [
     provideClientHydration()

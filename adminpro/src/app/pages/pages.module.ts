@@ -17,6 +17,7 @@ import { ComponentsModule } from '../components/components.module';
 // Importar modulos necesarios para pages
 import { FormsModule } from '@angular/forms';
 import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -29,6 +30,7 @@ import { PromesasComponent } from './promesas/promesas.component';
     PagesComponent,
     GraficaComponent,
     PromesasComponent,
+    RxjsComponent,
     // Grafica1Component
   ],
   exports: [
