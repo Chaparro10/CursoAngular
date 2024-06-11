@@ -6,11 +6,13 @@ import { ProgressComponent } from "./progress/progress.component";
 import { GraficaComponent } from "./grafica/grafica.component";
 import { PromesasComponent } from "./promesas/promesas.component";
 import { RxjsComponent } from "./rxjs/rxjs.component";
+import { authGuard } from "../guards/auth.guard";
 
 const routes: Routes=[
     {
         path:'dashboard',//Ruta principal 
         component:PagesComponent,
+        canActivate:[authGuard],
         children:[//Hijas
           {path:'',component:DashboardComponent},
           {path:'progress',component:ProgressComponent},
