@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../assets/environments/environment';
 
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { response } from 'express';
 import { error } from 'console';
+import { Router } from '@angular/router';
 
 
 const base_url=environment.base_url;
@@ -16,7 +17,7 @@ const url_google=environment.url_google;
 
 export class UsuarioService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
 
   crearUsuario(formData: any) {
     console.log("Creando usuario");
@@ -46,50 +47,53 @@ export class UsuarioService {
     )
   }
 
-  // private decodeToken(token: string): any {
-  //   const base64Url = token.split('.')[1];
-  //   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  //   const jsonPayload = decodeURIComponent(atob(base64).split('').map((c: string) => {
-  //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  //   }).join(''));
-  //   return JSON.parse(jsonPayload);
-  // }
-  
-// VerificaToken(): Observable<boolean> {
-//   const token = localStorage.getItem('token');
-  
-//   if (!token || token === undefined || token === '') {
-//     console.log("No hay token disponible");
-//     return of(false); // Retornar un Observable de false inmediatamente
-//   }
-  
-//   console.log("Este es el token", token);
-  
-//   // Decodificar el token para obtener el ID
-//   const decodedToken = this.decodeToken(token);
-//   const userId = decodedToken.uid; 
-  
-//   console.log('user id',userId)
+  logout(){
+    localStorage.removeItem('token')
+    this.router.navigateByUrl('/login')
+  }
 
-//   // Construir el cuerpo de la solicitud con el ID
-//   const body = { id: userId };
+  private decodeToken(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c: string) => {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  }
+  
+VerificaToken(): Observable<boolean> {
+  const token = localStorage.getItem('token');
+  
+  if (!token || token === undefined || token === '') {
+    console.log("No hay token disponible");
+    return of(false); // Retornar un Observable de false inmediatamente
+  }
+  
+  console.log("Este es el token", token);
+  
+  // Decodificar el token para obtener el ID
+  const decodedToken = this.decodeToken(token);
+  const userId = decodedToken.uid; 
+  
+  console.log('user id',userId)
 
-//   // Realizar la solicitud POST al backend con el ID en el cuerpo
-//   return this.http.post<any>(`${base_url}/login/renew`, body, {
-//     headers: {
-//       'x-token': token
-//     }
-//   }).pipe(
-//     tap((response: any) => {
-//       localStorage.setItem('token', response.token);
-//     }),
-//     map(response => true),
-//     catchError((error) => {
-//       console.error('Error during token renewal:', error);
-//       return of(false);
-//     })
-//   );
-// }
+    // Realizar la solicitud GET al backend con el token en los headers
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+  // Realizar la solicitud GET al backend con el ID en el cuerpo
+  return this.http.get<any>(`${base_url}/login/renew`,{headers}).pipe(
+    tap((response: any) => {
+      localStorage.setItem('token', response.token);
+    }),
+    map(response => true),
+    catchError((error) => {
+      console.error('Error during token renewal:', error);
+      return of(false);
+    })
+  );
+}
 
   
   
