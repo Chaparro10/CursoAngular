@@ -15,9 +15,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ComponentsModule } from '../components/components.module';
 
 // Importar modulos necesarios para pages
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -31,6 +32,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     GraficaComponent,
     PromesasComponent,
     RxjsComponent,
+    PerfilComponent,
     // Grafica1Component
   ],
   exports: [
@@ -46,7 +48,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     ComponentsModule,
     AppRoutingModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
+    ReactiveFormsModule
     
   ]
 })

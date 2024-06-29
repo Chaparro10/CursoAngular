@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,15 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class HeaderComponent {
 
+  //public urlImagen?='';
+  //public Nombre?='';
+  public usuario?:Usuario;
   constructor(private usuarioService:UsuarioService){
-
+    // this.urlImagen=usuarioService.usuario?.MostrarImagen;
+    // this.Nombre=usuarioService.usuario?.NombreUsuario;
+    // console.log("mercedes amg",this.urlImagen)
+    // console.log("mercedes amg",this.Nombre)
+    this.usuario=usuarioService.usuario;
   }
 
   logout(){

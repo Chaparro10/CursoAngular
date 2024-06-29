@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { UsuarioService } from '../services/usuario.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class authGuard implements CanActivate {
 
 
   // canActivate(): Observable<boolean> | boolean {
-  //   const token = localStorage.getItem('token');
+   // const token = localStorage.getItem('token');
 
   //   if (!token || token === undefined || token === '') {
   //     console.log("No hay token disponible");
@@ -26,21 +26,31 @@ export class authGuard implements CanActivate {
   //   }
   // }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ){
+  canActivate(): Observable<boolean>{
+    
     console.log("Pase por aqui");
 
     //return this.usuarioService.VerificaToken();
 
-    if (this.usuarioService.VerificaToken()) {
-      return true;
-      console.log("Pase por aqui1");
-    } else {
-      console.log("Pase por aqui2");
-      this.router.navigate(['/login']);
-      return false;
-    }
+    // if (this.usuarioService.VerificaToken()) {
+    //   console.log("Pase por aqui1");
+    //   return true;
+    
+    // } else {
+    //   console.log("Pase por aqui2");
+    //   this.router.navigate(['/login']);
+    //   return false;
+    // }
+
+
+
+    return this.usuarioService.VerificaToken().pipe(
+      tap((estaAutenticado:boolean) => {
+        if (!estaAutenticado) {
+          this.router.navigateByUrl('/login');
+        }
+      })
+    );
+    
   }
 }

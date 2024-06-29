@@ -7,6 +7,8 @@ import { GraficaComponent } from "./grafica/grafica.component";
 import { PromesasComponent } from "./promesas/promesas.component";
 import { RxjsComponent } from "./rxjs/rxjs.component";
 import { authGuard } from "../guards/auth.guard";
+import { PerfilComponent } from "./perfil/perfil.component";
+
 
 const routes: Routes=[
     {
@@ -15,10 +17,11 @@ const routes: Routes=[
         canActivate:[authGuard],
         children:[//Hijas
           {path:'',component:DashboardComponent},
-          {path:'progress',component:ProgressComponent},
-          {path:'grafica',component:GraficaComponent},
-          {path:'promesas',component:PromesasComponent},
-          {path:'rxjs',component:RxjsComponent}
+          {path:'progress',component:ProgressComponent,data:{titulo:'PROGRESS'}},
+          {path:'grafica',component:GraficaComponent,data:{titulo:'GRAFICA'}},
+          {path:'promesas',component:PromesasComponent,data:{titulo:'PROMESAS'}},
+          {path:'rxjs',component:RxjsComponent,data:{titulo:'RXJS'}},
+          {path:'perfil',component:PerfilComponent,data:{titulo:'Perfil'}}
 
         ]
     },

@@ -1,0 +1,62 @@
+
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Mi perfil de usuario</h4>
+                <h6 class="card-subtitle">Ajustes</h6>
+                <form class="form p-t-20" autocomplete="off" [formGroup]="perfilForm"  (ngSubmit)="ActualizaPerfil()">
+                    <div class="form-group">
+                        <label for="exampleInputuname">User Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Username" formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email" [readOnly]="usuario?.google">
+                        </div>
+                    </div>
+                
+                
+                    <button   type="submit"  class="btn btn-success waves-effect waves-light m-r-10">
+                        Submit
+                    </button>
+                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Imagen</h4>
+                <h6 class="card-subtitle">pela vacas</h6>
+                <div class="text-center">
+                    <!-- SI NO EXISTE IMAGEN TEMPORAL MUESTAR LA DEFAULT , CASO CONTRARIO MUESTRA LA TEMPORAL -->
+                    <img *ngIf="!ImagenTemporal" [src]="usuario?.MostrarImagen" class="img-avatar" alt="">
+                    <img *ngIf="ImagenTemporal" [src]="ImagenTemporal" class="img-avatar" alt="">
+                </div>
+                
+
+                <input type="file" (change)="cambiarImagen($event)">
+
+
+                <p></p>
+                <!-- Esta habilitado el boton hasta que se cargue una imagen -->
+                <button  [disabled]="!ImagenSubir" (click)="subirImagen()" type="button" class="btn btn-success waves-effect waves-light m-r-10">
+                    Submit
+                </button>
+                <button [disabled]="!ImagenSubir" (click)="botonCancelar()" type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
