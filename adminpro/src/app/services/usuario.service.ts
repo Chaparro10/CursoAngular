@@ -130,6 +130,18 @@ VerificaToken(): Observable<boolean> {
 }
 
 
+//TRAER USUARIOS
+getUsuarios(){
+  const token = localStorage.getItem('token');
+      // Realizar la solicitud GET al backend con el token en los headers
+      const headers = new HttpHeaders({ 
+        'Authorization': `Bearer ${token}`
+      });
+  
+  return this.http.get(`${base_url}/usuarios`,{headers})
+}
+
+
   
   
 }

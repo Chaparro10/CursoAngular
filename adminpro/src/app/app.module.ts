@@ -14,13 +14,13 @@ import { NotpagefoundComponent } from './pages/notpagefound/notpagefound.compone
 
 
 
-
 // import { Grafica1Component } from './pages/grafica1/grafica1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotpagefoundComponent,
+ 
 
   ],
   imports: [

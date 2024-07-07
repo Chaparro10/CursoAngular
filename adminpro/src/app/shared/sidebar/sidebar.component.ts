@@ -13,9 +13,16 @@ export class SidebarComponent {
   menuItems:any[];
 
   public usuario?: Usuario;
+
+  userProfileExpanded: boolean = false;
+
   constructor(private sidebarService: SidebarService,private usuarioService: UsuarioService){
       this.menuItems=sidebarService.menu;
       this.usuario=usuarioService.usuario;
     
+  }
+
+  toggleUserProfile() {
+    this.userProfileExpanded = !this.userProfileExpanded;
   }
 }

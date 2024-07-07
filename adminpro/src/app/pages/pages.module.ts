@@ -19,7 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 
+//PIPES
+import { TransformaUrlImgPipe } from '../pipe/transforma-url-img.pipe';
 
 
 
@@ -33,7 +36,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     PromesasComponent,
     RxjsComponent,
     PerfilComponent,
+    UsuariosComponent,
     // Grafica1Component
+    TransformaUrlImgPipe
   ],
   exports: [
      ProgressComponent,

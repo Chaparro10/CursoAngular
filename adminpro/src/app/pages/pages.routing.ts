@@ -8,6 +8,7 @@ import { PromesasComponent } from "./promesas/promesas.component";
 import { RxjsComponent } from "./rxjs/rxjs.component";
 import { authGuard } from "../guards/auth.guard";
 import { PerfilComponent } from "./perfil/perfil.component";
+import { UsuariosComponent } from "./mantenimientos/usuarios/usuarios.component";
 
 
 const routes: Routes=[
@@ -21,8 +22,11 @@ const routes: Routes=[
           {path:'grafica',component:GraficaComponent,data:{titulo:'GRAFICA'}},
           {path:'promesas',component:PromesasComponent,data:{titulo:'PROMESAS'}},
           {path:'rxjs',component:RxjsComponent,data:{titulo:'RXJS'}},
-          {path:'perfil',component:PerfilComponent,data:{titulo:'Perfil'}}
+          {path:'perfil',component:PerfilComponent,data:{titulo:'Perfil'}},
 
+
+          //mantenimientos
+          {path:'usuarios',component:UsuariosComponent,data:{titulo:'Usuarios'}}
         ]
     },
 ];
