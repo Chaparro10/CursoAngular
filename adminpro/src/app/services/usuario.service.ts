@@ -141,6 +141,12 @@ getUsuarios(){
   return this.http.get(`${base_url}/usuarios`,{headers})
 }
 
+//ELIMINAR USUARIOS
+EliminaUsuario(user:any ){
+    console.log("eliminando");
+    return this.http.delete(`${base_url}/usuarios/${user?._id}`)
+}
+
 
   
   

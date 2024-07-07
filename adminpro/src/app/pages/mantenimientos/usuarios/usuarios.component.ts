@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario.model';
+import { Console } from 'console';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios',
@@ -43,5 +45,41 @@ export class UsuariosComponent implements OnInit {
       .filter((c:any) => c.nombre.toLowerCase().indexOf(terminoDeBusqueda.trim().toLowerCase()) > -1
         || String(c.email).toLowerCase().indexOf(terminoDeBusqueda.trim().toLowerCase()) > -1
       );
+  }
+
+
+  //Eliminar Usuario
+  EliminarUsuario(usuario: Usuario) {
+    console.log("User", usuario)
+
+
+    Swal.fire({
+      title: "¿Borrar Usuario?",
+      text: `¿Seguro de Borra?, a ${usuario.nombre} ` ,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Eliminar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.usuarioservice.EliminaUsuario(usuario).subscribe(response=>{
+          Swal.fire({
+            title: "Deleted!",
+            text: `Usuario Eliminado ${usuario.nombre} ` ,
+            icon: "success"
+          });
+          this.TraerUsuario();
+        },(error=>{
+          Swal.fire({
+            title: "Deleted!",
+            text: "Ocurrio un error al eliminar el Usuario!",
+            icon: "error"
+          });
+        }))
+       
+      }
+    });
   }
 }
