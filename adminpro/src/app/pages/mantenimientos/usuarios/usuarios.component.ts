@@ -13,6 +13,8 @@ export class UsuariosComponent implements OnInit {
   Listusuarios:any;
   search:any;
   filtroUsuarios:any; //guardar la informacion filtrada
+
+  public  usuario?: Usuario;
   constructor(private usuarioservice:UsuarioService){
   }
 
@@ -51,7 +53,12 @@ export class UsuariosComponent implements OnInit {
   //Eliminar Usuario
   EliminarUsuario(usuario: Usuario) {
     console.log("User", usuario)
-
+    console.log("Usuario Recibido:",usuario._id,'Usuario Id:',this.usuarioservice.usuario?._id)
+    if(usuario._id ===this.usuarioservice.usuario?._id){
+        return Swal.fire('Error','No te puedes Borrar a ti mismo','error')
+    }
+    console.log("No deberia entrar aqui")
+    return;
 
     Swal.fire({
       title: "¿Borrar Usuario?",
