@@ -89,4 +89,12 @@ export class UsuariosComponent implements OnInit {
       }
     });
   }
+
+  CambiarRol(data:any){
+      console.log('Data select',data)
+
+      this.usuarioservice.actualizarInfoUser(data).subscribe(response=>{
+        console.log("Reespuesta Update Rol",response)
+      })
+  }
 }

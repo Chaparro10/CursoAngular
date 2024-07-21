@@ -52,6 +52,8 @@ public  usuario?: Usuario;
     return this.http.put(`${base_url}/usuarios/${this.usuario?._id}`, data,{headers})
   }
 
+ 
+
   LoginUsuario(formData: any) {
     console.log("Login usuario");
     return this.http.post(`${base_url}/login`, formData)
@@ -145,6 +147,22 @@ getUsuarios(){
 EliminaUsuario(user:any ){
     console.log("eliminando");
     return this.http.delete(`${base_url}/usuarios/${user?._id}`)
+}
+
+ //Actualiza Informacion Usuario
+ actualizarInfoUser(data:Usuario){
+  const token = localStorage.getItem('token');
+
+ 
+  if (!token || token === undefined || token === '') {
+    console.log("No hay token disponible");
+    return of(false); // Retornar un Observable de false inmediatamente
+  }
+    const headers = new HttpHeaders({ 
+      'Authorization': `Bearer ${token}`
+    });
+
+  return this.http.put(`${base_url}/usuarios/${data._id}`, data,{headers})
 }
 
 
