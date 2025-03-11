@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 export class UserComponent {
     username:string="Kevin";
     isLoggedIn:boolean=true
+
+
+    cambiarLogin(){
+      this.isLoggedIn=!this.isLoggedIn;
+    }
 }

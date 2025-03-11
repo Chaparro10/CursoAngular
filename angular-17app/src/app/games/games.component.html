@@ -1,11 +1,17 @@
-
-
 <h1>Lista de Juegos</h1>
 <ul>
     @for (item of games; track item.id) {
-        <li>    
-            {{$index}}-{{item.name}}
-        </li>
+    <li>
+        {{$index}}-{{item.name}}
+        <button (click)="handleDeleteGame(item.id)">
+            Eliminar Juego
+        </button>
+    </li>
     }
-    
+
 </ul>
+
+<input type="text" placeholder="Ingresa el Nombre del Juego a agregar" [(ngModel)]="nameGame" />
+<button (click)="handleAddGame()">
+    Agregar Juego
+</button>
