@@ -1,4 +1,4 @@
-<h1>Lista de Juegos</h1>
+<h1>Lista de Juegos {{user}}</h1>
 <ul>
     @for (item of games; track item.id) {
     <li>
@@ -15,3 +15,7 @@
 <button (click)="handleAddGame()">
     Agregar Juego
 </button>
+
+<br>
+<br>
+<button (click)="enviarMensaje()">Enviar Mensaje al Padre</button>

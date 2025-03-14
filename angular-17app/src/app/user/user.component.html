@@ -10,3 +10,9 @@
 <button (click)="cambiarLogin()">
     Cambiar el estado
 </button>
+
+
+
+<!-- Componente Hijo -->
+<app-games user="{{user}}" (mandarMensaje)="recibirMensaje($event)"></app-games>
+<p>Mensaje recibido: {{ mensajeRecibido }}</p>

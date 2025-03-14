@@ -5,7 +5,7 @@ import { GamesComponent } from "./games/games.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, UserComponent, GamesComponent],
+  imports: [RouterOutlet, UserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

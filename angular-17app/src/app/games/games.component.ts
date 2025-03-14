@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class GamesComponent {
   nameGame: string = '';
+  @Input() user:string='Kevin' //recibir ------ componente hijo
+  @Output() mandarMensaje= new EventEmitter<string>();//mandar
 
   games: any = [
     { id: 1, name: 'Call of duty' },
@@ -27,5 +29,8 @@ export class GamesComponent {
 
   handleDeleteGame(id: number) {
     this.games = this.games.filter((item: any) => item.id !== id);
+  }
+  enviarMensaje() {
+    this.mandarMensaje.emit('¡Hola Padre!'); // Emite un mensaje
   }
 }
