@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+showMenu:boolean=false;
+
+
+
+toggleMenu(){
+  this.showMenu=!this.showMenu;
+}
+
 
 }
