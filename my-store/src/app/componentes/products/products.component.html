@@ -1,6 +1,4 @@
-<p>products works!</p>
 
-
-<img [src]="product.image" alt=""/>
-<h2>{{product.price}}</h2>
-<p>{{product.name}}</p>
+<div class="products--grid">
+        <app-product [product]="product" *ngFor="let product of products "></app-product>
+</div>
