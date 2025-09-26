@@ -12,7 +12,7 @@ import { ProductsService } from '../../servicios/products.service';
 export class ProductsComponent implements OnInit  {
   total: number = 0;
   totalProducts:number=0;
-
+  today:Date=new Date();
   constructor(private storeService:StoreService, private productsService:ProductsService){}
 
 

@@ -10,6 +10,8 @@ import { ImgComponent } from './componentes/img/img.component';
 import { ProductsComponent } from './componentes/products/products.component';
 import { ProductComponent } from './componentes/product/product.component';
 import { NavComponent } from './componentes/nav/nav.component';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { NavComponent } from './componentes/nav/nav.component';
     ImgComponent,
     ProductsComponent,
     ProductComponent,
-    NavComponent
+    NavComponent,
+    ReversePipe,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
