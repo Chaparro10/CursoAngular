@@ -21,6 +21,11 @@
             <input type="text" placeholder="Ingresa el titulo" class="
             form-control" [(ngModel)]="titulo" />
             {{titulo}}
+
+
+            <div *ngFor="let persona of personas; let i=index">
+                  {{i}}-{{persona.nombre}} {{persona.apellido}}
+            </div>
         </div>
     </div>
 </div>
