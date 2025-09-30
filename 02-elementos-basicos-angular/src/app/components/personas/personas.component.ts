@@ -10,8 +10,12 @@ export class PersonasComponent {
 
   isActive:boolean=false;
   mensaje:string="No se ha agregado ninguna persona";
-
+  titulo:string="";
   agregarPersona(){
     this.mensaje="Persona agregada";
+  }
+
+  modificarTitulo(event:Event){
+    this.titulo=(<HTMLInputElement>event.target).value;
   }
 }
