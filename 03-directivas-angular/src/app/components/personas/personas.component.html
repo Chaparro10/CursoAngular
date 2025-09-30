@@ -7,7 +7,6 @@
                 </h3>
         </div>  
         <hr/>
-
         <form action="" class="form-row">
             <div class="form-group col-md-2">
                 <label for="nombre" class="sr-only">
@@ -32,33 +31,11 @@
         <hr/>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary" [disabled]="isActive" (click)="agregarPersona()">
-                Agregar Persona
-            </button>
-            <p *ngIf="mostrar; else sinPersona">{{mensaje}}</p>
+<app-persona
+*ngFor="let personaElement of personas; let i=index"
+[persona]="personaElement"
+[indice]="i"
+>
 
-            <ng-template #sinPersona>
-                <p>
-                    No se han agregado personas
-                </p>
-            </ng-template>
-            <app-persona></app-persona>
+</app-persona>
 
-            <label for="">Titulo persona</label>
-            <input type="text" placeholder="Ingresa el titulo" class="
-            form-control" (input)="modificarTitulo($event)" />
-
-            <input type="text" placeholder="Ingresa el titulo" class="
-            form-control" [(ngModel)]="title" />
-            {{title}}
-
-
-            <div *ngFor="let persona of personas; let i=index">
-                  {{i}}-{{persona.nombre}} {{persona.apellido}}
-            </div>
-        </div>
-    </div>
-</div>

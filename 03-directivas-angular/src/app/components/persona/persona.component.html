@@ -1,14 +1,10 @@
-<p>
-    {{nombre}}
-</p>
-<p>
-    {{apellido}}
-</p>
-<p>{{edad}}</p>
-
-
-<div (keyup)="0">
-    <label for="">Repetidor:</label>
-    <input type="text" #entrada/>
-    {{entrada.value}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div >
+                  {{indice}}-{{persona.nombre}} {{persona.apellido}}
+            </div>
+        </div>
+    </div>
+    <hr />
 </div>
