@@ -2,9 +2,11 @@
     <div class="row">
         <div class="col">
             <h1>Listado de personas</h1>
-            <button class="btn btn-primary" [disabled]="isActive">
+            <button class="btn btn-primary" [disabled]="isActive" 
+            (click)="agregarPersona()">
                 Agregar Persona
             </button>
+            <p>{{mensaje}}</p>
             <app-persona></app-persona>
         </div>
     </div>

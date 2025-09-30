@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 export class PersonasComponent {
 
   isActive:boolean=false;
+  mensaje:string="No se ha agregado ninguna persona";
+
+  agregarPersona(){
+    this.mensaje="Persona agregada";
+  }
 }
