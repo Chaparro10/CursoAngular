@@ -10,8 +10,12 @@ import { Persona } from '../../models/persona.model';
 export class PersonasComponent {
   isActive:boolean=false;
   mensaje:string="No se ha agregado ninguna persona";
-  titulo:string="";
+  titulo:string="Listado de personas";
   mostrar:boolean=false;
+  title:string="";
+  nombreInput:string="";
+  apellidoInput:string="";
+  
 
 
 
@@ -21,9 +25,12 @@ export class PersonasComponent {
   agregarPersona(){
     this.mensaje="Persona agregada";
     this.mostrar=true;
+    let personaNew=new Persona(this.nombreInput,this.apellidoInput);
+    this.personas.push(personaNew);
+
   }
 
   modificarTitulo(event:Event){
-    this.titulo=(<HTMLInputElement>event.target).value;
+    this.title=(<HTMLInputElement>event.target).value;
   }
 }

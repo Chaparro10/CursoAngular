@@ -1,7 +1,40 @@
+
+
+<div class="container">
+        <div class="col">
+                <h3>
+                    {{titulo}}
+                </h3>
+        </div>  
+        <hr/>
+
+        <form action="" class="form-row">
+            <div class="form-group col-md-2">
+                <label for="nombre" class="sr-only">
+                        Nombre
+                </label>
+                <input type="text" name="nombre" id="nombre" placeholder="Ingresa nombre" class="form-control" [(ngModel)]="nombreInput"/>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="apellido" class="sr-only">
+                        Apellido
+                </label>
+                <input type="text" name="apellido" id="apellido" placeholder="Ingresa el apellido" class="form-control" [(ngModel)]="apellidoInput"/>
+            </div>
+        </form>
+
+        <div class="col mt-2">
+            <button type="submit" class="btn btn-secondary" (click)="agregarPersona()">
+                    Agregar Persona
+            </button>
+        </div>
+        <hr/>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Listado de personas</h1>
             <button class="btn btn-primary" [disabled]="isActive" (click)="agregarPersona()">
                 Agregar Persona
             </button>
@@ -19,8 +52,8 @@
             form-control" (input)="modificarTitulo($event)" />
 
             <input type="text" placeholder="Ingresa el titulo" class="
-            form-control" [(ngModel)]="titulo" />
-            {{titulo}}
+            form-control" [(ngModel)]="title" />
+            {{title}}
 
 
             <div *ngFor="let persona of personas; let i=index">
