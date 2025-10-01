@@ -7,13 +7,15 @@ import { PersonasComponent } from './components/personas/personas.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonasComponent,
     PersonaComponent,
-    FormularioComponent
+    FormularioComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

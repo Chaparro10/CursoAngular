@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PersonasComponent } from './components/personas/personas.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   { path: '', component: PersonasComponent },
@@ -11,7 +12,7 @@ const routes: Routes = [
       { path: ':id', component: FormularioComponent },
     ]
   },
-  { path: '**', redirectTo: '' } // Ruta por defecto para rutas no encontradas
+  { path: '**', component: ErrorComponent } // Ruta por defecto para rutas no encontradas
 ];
 
 @NgModule({
