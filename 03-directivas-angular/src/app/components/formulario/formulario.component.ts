@@ -35,14 +35,19 @@ export class FormularioComponent implements OnInit {
     let personaNew = new Persona(this.nombre.nativeElement.value, this.apellido.nativeElement.value);
 
     if(this.index){
-          this,this.personasService.modificarPersona(this.index,personaNew);
+        this.personasService.modificarPersona(this.index,personaNew);
     }else{
       this.personasService.personaAgregada(personaNew);
     }
     this.router.navigate(['/personas']);
     // this.logginService.sendMessageConsole(`Persona: ${personaNew.nombre}`);
     // this.personaCreada.emit(personaNew);
-   
+  }
 
+  eliminarPersona(){
+    if(this.index){
+        this.personasService.eliminarPersona(this.index);
+    }
+    this.router.navigate(['/personas']);
   }
 }

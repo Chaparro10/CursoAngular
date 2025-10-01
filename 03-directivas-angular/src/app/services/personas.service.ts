@@ -26,4 +26,10 @@ modificarPersona(index:number,persona:Persona){
      persona1.apellido=persona.apellido;
 }
 
+
+eliminarPersona(index:number){
+  let persona1=this.personas[index];
+  this.personas.splice(index,1);
+
+}
 }
