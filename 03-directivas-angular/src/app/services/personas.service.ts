@@ -37,7 +37,8 @@ export class PersonasService {
 
   eliminarPersona(index: number) {
     this.personas.splice(index, 1);
-
+    this.dataService.eliminarPersona(index);
+    this.modificarPersonas();
   }
 
   obtenerPersonas() {
@@ -46,5 +47,11 @@ export class PersonasService {
 
   setPersonas(personas: Persona[]) {
     this.personas = personas;
+  }
+
+  modificarPersonas() {
+    if (this.personas) {
+      this.dataService.guardarPersonas(this.personas);
+    }
   }
 }
