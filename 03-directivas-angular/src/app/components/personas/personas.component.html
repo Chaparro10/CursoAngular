@@ -6,8 +6,8 @@
                     {{titulo}}
                 </h3>
         </div>
-        <app-formulario 
-        (personaCreada)="personaAgregada($event)"></app-formulario>  
+        <!-- (personaCreada)="personaAgregada($event)" -->
+        <app-formulario ></app-formulario>  
         <hr/>
         <app-persona
         *ngFor="let personaElement of personas; let i=index"

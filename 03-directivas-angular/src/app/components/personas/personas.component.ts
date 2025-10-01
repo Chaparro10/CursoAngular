@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../models/persona.model';
+import { PersonasService } from '../../services/personas.service';
 
 @Component({
   selector: 'app-personas',
@@ -7,21 +8,29 @@ import { Persona } from '../../models/persona.model';
   templateUrl: './personas.component.html',
   styleUrl: './personas.component.css'
 })
-export class PersonasComponent {
+export class PersonasComponent  implements OnInit{
   isActive:boolean=false;
   mensaje:string="No se ha agregado ninguna persona";
   titulo:string="Listado de personas";
   mostrar:boolean=false;
   title:string="";
 
-  personas:Persona[]=[new Persona("Usuario1","apellido1"),new Persona("Usuario2","apellido2"),new Persona("Usuario3","apellido3")]
+  personas:Persona[]=[];
 
+
+  constructor(private personaService:PersonasService){}
+
+
+  ngOnInit(): void {
+      this.personas=this.personaService.personas;
+  }
 
   modificarTitulo(event:Event){
     this.title=(<HTMLInputElement>event.target).value;
   }
 
-  personaAgregada(persona:Persona){
-      this.personas.push(persona);
-  }
+// personaAgregada(persona:Persona){
+//   this.personaService.personaAgregada(persona);
+// }
+
 }
