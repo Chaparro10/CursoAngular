@@ -4,11 +4,14 @@ import { PersonasComponent } from './components/personas/personas.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 
 const routes: Routes = [
-  {path:'',component:PersonasComponent},
-  {path:'personas',component:PersonasComponent},
-  {path:'personas/agregar',component:FormularioComponent},
-  {path:'personas/:id',component:FormularioComponent},
-  {path:'**',redirectTo:''} // Ruta por defecto para rutas no encontradas
+  { path: '', component: PersonasComponent },
+  {
+    path: 'personas', component: PersonasComponent, children: [
+      { path: 'agregar', component: FormularioComponent },
+      { path: ':id', component: FormularioComponent },
+    ]
+  },
+  { path: '**', redirectTo: '' } // Ruta por defecto para rutas no encontradas
 ];
 
 @NgModule({
