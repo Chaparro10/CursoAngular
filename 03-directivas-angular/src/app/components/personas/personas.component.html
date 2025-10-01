@@ -1,21 +1,16 @@
-
-
 <div class="container">
-        <div class="col">
-                <h3>
-                    {{titulo}}
-                </h3>
+    <div class="col">
+        <h3>
+            {{titulo}}
+        </h3>
+        <div style="text-align: center;">
+            <button style="cursor: pointer;" (click)="agregar()">+</button>
         </div>
-        <!-- (personaCreada)="personaAgregada($event)" -->
-        <app-formulario ></app-formulario>  
-        <hr/>
-        <app-persona
-        *ngFor="let personaElement of personas; let i=index"
-        [persona]="personaElement"
-        [indice]="i"
-        >
-        </app-persona>
+    </div>
+    <!-- (personaCreada)="personaAgregada($event)" -->
+
+    <hr />
+    <app-persona *ngFor="let personaElement of personas; let i=index" [persona]="personaElement" [indice]="i">
+    </app-persona>
+
 </div>
-
-
-
