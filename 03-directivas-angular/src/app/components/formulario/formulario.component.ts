@@ -13,6 +13,7 @@ export class FormularioComponent implements OnInit {
   nombreInput: string = "";
   apellidoInput: string = "";
   index: number = 0;
+  modoEdicion: number = 0;
   // @Output() personaCreada = new EventEmitter<Persona>(); //comunicar del hijo al padre
 
   @ViewChild("nombreRef") nombre!: ElementRef;
@@ -24,19 +25,24 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.index = this.route.snapshot.params['id'];
-    if(this.index){
-       let persona:Persona=this.personasService.encontrarPersona(this.index);
-       this.nombreInput=persona.nombre;
-       this.apellidoInput=persona.apellido;
+    this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion'];
+
+
+
+
+    if (this.modoEdicion && this.modoEdicion == 1) {
+      let persona: Persona = this.personasService.encontrarPersona(this.index);
+      this.nombreInput = persona.nombre;
+      this.apellidoInput = persona.apellido;
     }
   }
 
   agregarPersona() {
     let personaNew = new Persona(this.nombre.nativeElement.value, this.apellido.nativeElement.value);
 
-    if(this.index){
-        this.personasService.modificarPersona(this.index,personaNew);
-    }else{
+    if (this.modoEdicion && this.modoEdicion == 1) {
+      this.personasService.modificarPersona(this.index, personaNew);
+    } else {
       this.personasService.personaAgregada(personaNew);
     }
     this.router.navigate(['/personas']);
@@ -44,9 +50,9 @@ export class FormularioComponent implements OnInit {
     // this.personaCreada.emit(personaNew);
   }
 
-  eliminarPersona(){
-    if(this.index){
-        this.personasService.eliminarPersona(this.index);
+  eliminarPersona() {
+    if (this.modoEdicion && this.modoEdicion == 1) {
+      this.personasService.eliminarPersona(this.index);
     }
     this.router.navigate(['/personas']);
   }

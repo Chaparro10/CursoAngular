@@ -16,7 +16,7 @@
                 [(ngModel)]="apellidoInput" #apellidoRef required />
         </div>
         <div class="col mt-2">
-            <button *ngIf="!index;else Editar" type="submit" class="btn btn-secondary" (click)="agregarPersona()">
+            <button *ngIf="!modoEdicion;else Editar" type="submit" class="btn btn-secondary" (click)="agregarPersona()">
                 Agregar Persona
             </button>
 
