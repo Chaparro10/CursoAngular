@@ -13,8 +13,8 @@ export class FormularioComponent {
 
   @Output() personaCreada = new EventEmitter<Persona>(); //comunicar del hijo al padre
 
-  agregarPersona(){
-    let personaNew=new Persona(this.nombreInput,this.apellidoInput);
+  agregarPersona(nombre:HTMLInputElement,apellido:HTMLInputElement){
+    let personaNew=new Persona(nombre.value,apellido.value);
     this.personaCreada.emit(personaNew);
   }
 }
