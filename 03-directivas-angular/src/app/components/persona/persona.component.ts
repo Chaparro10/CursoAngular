@@ -12,6 +12,6 @@ export class PersonaComponent {
   apellido:string='Perez';
   edad:number=28;
 
-  @Input() persona!:Persona;
+  @Input() persona!:Persona; //recibir del padre al hijo
   @Input() indice!:number;
 }

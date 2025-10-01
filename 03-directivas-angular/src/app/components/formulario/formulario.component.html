@@ -1,0 +1,21 @@
+<form action="" class="form-row">
+    <div class="form-group col-md-2">
+        <label for="nombre" class="sr-only">
+                Nombre
+        </label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingresa nombre" class="form-control" [(ngModel)]="nombreInput"/>
+    </div>
+
+    <div class="form-group col-md-2">
+        <label for="apellido" class="sr-only">
+                Apellido
+        </label>
+        <input type="text" name="apellido" id="apellido" placeholder="Ingresa el apellido" class="form-control" [(ngModel)]="apellidoInput"/>
+    </div>
+    <div class="col mt-2">
+        <button type="submit" class="btn btn-secondary" (click)="agregarPersona()">
+                Agregar Persona
+        </button>
+    </div>
+    <hr/>
+</form>

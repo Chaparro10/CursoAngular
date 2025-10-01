@@ -13,24 +13,15 @@ export class PersonasComponent {
   titulo:string="Listado de personas";
   mostrar:boolean=false;
   title:string="";
-  nombreInput:string="";
-  apellidoInput:string="";
-  
-
-
 
   personas:Persona[]=[new Persona("Usuario1","apellido1"),new Persona("Usuario2","apellido2"),new Persona("Usuario3","apellido3")]
 
 
-  agregarPersona(){
-    this.mensaje="Persona agregada";
-    this.mostrar=true;
-    let personaNew=new Persona(this.nombreInput,this.apellidoInput);
-    this.personas.push(personaNew);
-
-  }
-
   modificarTitulo(event:Event){
     this.title=(<HTMLInputElement>event.target).value;
+  }
+
+  personaAgregada(persona:Persona){
+      this.personas.push(persona);
   }
 }
