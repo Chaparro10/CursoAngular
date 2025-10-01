@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../models/persona.model';
 import { PersonasService } from '../../services/personas.service';
 import { Router } from '@angular/router';
-import { DataServices } from '../../services/data.services';
 
 @Component({
   selector: 'app-personas',
@@ -10,34 +9,40 @@ import { DataServices } from '../../services/data.services';
   templateUrl: './personas.component.html',
   styleUrl: './personas.component.css'
 })
-export class PersonasComponent  implements OnInit{
-  isActive:boolean=false;
-  mensaje:string="No se ha agregado ninguna persona";
-  titulo:string="Listado de personas";
-  mostrar:boolean=false;
-  title:string="";
+export class PersonasComponent implements OnInit {
+  isActive: boolean = false;
+  mensaje: string = "No se ha agregado ninguna persona";
+  titulo: string = "Listado de personas";
+  mostrar: boolean = false;
+  title: string = "";
 
-  personas:Persona[]=[];
+  personas: Persona[] = [];
 
 
-  constructor(private personaService:PersonasService,private router:Router, private dataService:DataServices){}
+  constructor(private personaService: PersonasService, private router: Router) { }
 
 
   ngOnInit(): void {
-      this.personas=this.personaService.personas;
+      this.setPersonas();
   }
 
-  modificarTitulo(event:Event){
-    this.title=(<HTMLInputElement>event.target).value;
+  modificarTitulo(event: Event) {
+    this.title = (<HTMLInputElement>event.target).value;
   }
 
-// personaAgregada(persona:Persona){
-//   this.personaService.personaAgregada(persona);
-// }
-agregar(){
-  this.dataService.guardarPersona(this.personas);
-  this.router.navigate(["personas/agregar"]);
-}
+  // personaAgregada(persona:Persona){
+  //   this.personaService.personaAgregada(persona);
+  // }
+  agregar() {
+    this.router.navigate(["personas/agregar"]);
+  }
+
+  setPersonas(){
+    this.personaService.obtenerPersonas().subscribe({
+      next: (personas:Persona[]) => this.personas = personas,
+      error: (err) => console.log('error al cargar personas:', err)
+    })
+  }
 
 
 
