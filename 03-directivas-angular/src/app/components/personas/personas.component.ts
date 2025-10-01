@@ -19,7 +19,9 @@ export class PersonasComponent implements OnInit {
   personas: Persona[] = [];
 
 
-  constructor(private personaService: PersonasService, private router: Router) { }
+  constructor(
+    private personaService: PersonasService,
+     private router: Router) { }
 
 
   ngOnInit(): void {
@@ -30,16 +32,16 @@ export class PersonasComponent implements OnInit {
     this.title = (<HTMLInputElement>event.target).value;
   }
 
-  // personaAgregada(persona:Persona){
-  //   this.personaService.personaAgregada(persona);
-  // }
   agregar() {
     this.router.navigate(["personas/agregar"]);
   }
 
   setPersonas(){
     this.personaService.obtenerPersonas().subscribe({
-      next: (personas:Persona[]) => this.personas = personas,
+      next: (personas:Persona[]) => {
+        this.personas = personas;
+        this.personaService.setPersonas(personas);
+      },
       error: (err) => console.log('error al cargar personas:', err)
     })
   }

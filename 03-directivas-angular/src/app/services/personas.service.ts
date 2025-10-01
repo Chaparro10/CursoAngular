@@ -12,31 +12,35 @@ export class PersonasService {
 
   constructor(private loggigService: LoggingService, private dataService: DataServices) { }
 
-  personaAgregada(persona: Persona) {
-    this.loggigService.sendMessageConsole("Enviando logs desde el servicio de personas")
+  agregarPersona(persona: Persona) {
+    this.loggigService.sendMessageConsole("agregamos persona "
+      + persona.nombre)
     this.personas.push(persona);
-    this.dataService.guardarPersona(this.personas);
+    this.dataService.guardarPersonas(this.personas);
   }
 
   encontrarPersona(index: number) {
-    let persona: Persona = this.personas[index];
-    return persona;
+    if (this.personas && this.personas.length > index) {
+      return this.personas[index];
+    }
+    console.error('Persona no encontrada en el índice:', index);
+    return undefined;
   }
 
   modificarPersona(index: number, persona: Persona) {
-    let persona1 = this.personas[index];
+    let persona1 = this.personas[index]; // Paso por referencia
     persona1.nombre = persona.nombre;
     persona1.apellido = persona.apellido;
+    this.dataService.modificarPersona(index, persona);
   }
 
 
   eliminarPersona(index: number) {
-    let persona1 = this.personas[index];
     this.personas.splice(index, 1);
 
   }
 
-  obtenerPersonas(): Observable<Persona[]> {
+  obtenerPersonas() {
     return this.dataService.cargarPersonas();
   }
 

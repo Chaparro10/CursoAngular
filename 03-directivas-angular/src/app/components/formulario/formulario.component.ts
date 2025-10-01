@@ -26,14 +26,19 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
     this.index = this.route.snapshot.params['id'];
     this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion'];
-
-
-
-
+    console.log('first', this.modoEdicion)
     if (this.modoEdicion && this.modoEdicion == 1) {
-      let persona: Persona = this.personasService.encontrarPersona(this.index);
-      this.nombreInput = persona.nombre;
-      this.apellidoInput = persona.apellido;
+      let persona: Persona | undefined = this.personasService.encontrarPersona(this.index);
+
+      console.log('persona', persona)
+      if (persona) {
+        this.nombreInput = persona.nombre;
+        this.apellidoInput = persona.apellido;
+      } else {
+        console.error('Persona no encontrada con índice:', this.index);
+        // Redirigir a la lista de personas si no se encuentra la persona
+        this.router.navigate(['/personas']);
+      }
     }
   }
 
@@ -43,7 +48,7 @@ export class FormularioComponent implements OnInit {
     if (this.modoEdicion && this.modoEdicion == 1) {
       this.personasService.modificarPersona(this.index, personaNew);
     } else {
-      this.personasService.personaAgregada(personaNew);
+      this.personasService.agregarPersona(personaNew);
     }
     this.router.navigate(['/personas']);
     // this.logginService.sendMessageConsole(`Persona: ${personaNew.nombre}`);
