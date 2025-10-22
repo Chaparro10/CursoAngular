@@ -12,6 +12,7 @@ import { DataServices } from './services/data.services';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
+import { LoginGuardian } from './guards/login.guardian.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { LoginService } from './services/login.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [DataServices,LoginService],
+  providers: [DataServices,LoginService,LoginGuardian],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
