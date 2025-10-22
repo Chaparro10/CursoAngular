@@ -12,16 +12,15 @@ export class DataServices {
 
     cargarPersonas(): Observable<Persona[]> {
         const token=this.loginService.getIdToken();
-
-        console.log('token', token)
-        return this.httpClient.get<Persona[]>('https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos.json?auth='+token);
+        return this.httpClient.get<Persona[]>(`https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos.json?auth=${token}`);
     }
 
 
     //Guardar persona
     guardarPersonas(personas: Persona[]) {
+        const token=this.loginService.getIdToken();
         this.httpClient
-            .put('https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos.json', personas)
+            .put(`https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos.json?auth=${token}`, personas)
             .subscribe({
                 next: (response) => console.log('resultado guardar personas: ' + response),
                 error: (error) => console.log('Error al guardar Personas: ' + error),
@@ -30,7 +29,8 @@ export class DataServices {
     }
 
     modificarPersona(index: number, persona: Persona): void {
-        const url = `https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos/${index}.json`;
+        const token=this.loginService.getIdToken();
+        const url = `https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos/${index}.json?auth=${token}`;
         this.httpClient.put(url, persona)
             .subscribe({
                 next: (response) => console.log("Resultado modificar Persona: ", response),
@@ -40,7 +40,8 @@ export class DataServices {
     }
 
     eliminarPersona(index: number): void {
-        const url = `https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos/${index}.json`;
+        const token=this.loginService.getIdToken();
+        const url = `https://listado-personas-b1f9d-default-rtdb.firebaseio.com/datos/${index}.json?auth=${token}`;
         this.httpClient.delete(url)
             .subscribe({
                 next: (response) => console.log("Resultado eliminar Persona: ", response),
