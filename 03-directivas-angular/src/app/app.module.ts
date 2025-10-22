@@ -10,6 +10,8 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { ErrorComponent } from './components/error/error.component';
 import { DataServices } from './services/data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     PersonasComponent,
     PersonaComponent,
     FormularioComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [DataServices],
+  providers: [DataServices,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

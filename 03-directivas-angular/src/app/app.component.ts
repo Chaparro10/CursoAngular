@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { initializeApp } from 'firebase/app';
+
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,16 @@ import { Component } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = '03-directivas-angular';
+
+  constructor(){}
+
+
+  ngOnInit(): void {
+    initializeApp({
+      apiKey: "AIzaSyDoCb_b-QPEb35uXMrk8pgQvblRzlVEBDU",
+      authDomain: "listado-personas-b1f9d.firebaseapp.com"
+    });
+  }
 }
