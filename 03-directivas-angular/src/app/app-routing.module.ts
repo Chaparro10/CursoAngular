@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PersonasComponent } from './components/personas/personas.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ErrorComponent } from './components/error/error.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: PersonasComponent },
@@ -11,6 +12,9 @@ const routes: Routes = [
       { path: 'agregar', component: FormularioComponent },
       { path: ':id', component: FormularioComponent },
     ]
+  },
+  {
+    path:'login',component:LoginComponent
   },
   { path: '**', component: ErrorComponent } // Ruta por defecto para rutas no encontradas
 ];
