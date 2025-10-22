@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CabeceroComponent } from './components/cabecero/cabecero.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
@@ -12,6 +11,7 @@ import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { TableroComponent } from './components/tablero/tablero.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,7 @@ import { TableroComponent } from './components/tablero/tablero.component';
     TableroComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    BrowserModule,AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
